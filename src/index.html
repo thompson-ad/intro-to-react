@@ -15,22 +15,22 @@
     <script src="https://unpkg.com/react@16.8.4/umd/react.development.js"></script>
     <!-- this is the react DOM library for rendering to the browser -->
     <script src="https://unpkg.com/react-dom@16.8.4/umd/react-dom.development.js"></script>
-    <script src="./App.js"></script>
+    <script src="./App2.js"></script>
     <script>
     // Your code is going to go here
     // App component (stamp)
     // This function allows you to "stamp" the component
-      const App = () => {
-        // createElement can output a component that you define or one that is passed in as a string "h1"
-        // it take 3 arguments, the thing you are creating, the attributes you want to pass to it and the content that may or may not go in it
-        return React.createElement(
-          "div",
-          {},
-          React.createElement("h1", {}, "My App!")
-        );
-      };
+      // const App = () => {
+      //   // createElement can output a component that you define or one that is passed in as a string "h1"
+      //   // it take 3 arguments, the thing you are creating, the attributes you want to pass to it and the content that may or may not go in it
+      //   return React.createElement(
+      //     "div",
+      //     {},
+      //     React.createElement("h1", {}, "My App!")
+      //   );
+      // };
 
-      ReactDOM.render(React.createElement(App), document.getElementById("root"));
+      // ReactDOM.render(React.createElement(App), document.getElementById("root"));
     </script>
 
     <!-- this is how you would write the simplest react app, to separate things out a bit, put it into the app.js file -->
