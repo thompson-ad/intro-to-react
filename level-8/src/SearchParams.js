@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 // useEffect will help us with calling to the API
 // the API is from Petfinder.com and is US based
 // we install cross enc so that we get mock data from the API
@@ -6,20 +6,7 @@ import React, { useState, useEffect } from "react";
 import pet, { ANIMALS } from "@frontendmasters/pet";
 import useDropdown from "./useDropdown";
 import Results from "./Results";
-
-// LIFECYCLE
-// SearchParams gets rendered for the first time
-// Sets all the hooks up
-// Location - Seattle WA
-// Breeds - []
-// Animal - "dog"
-// breed - ""
-// schedule the useEffect
-// return markup to the DOM so user will see it
-// run the sceduled effect
-// go out to the API with animal
-// get breeds back
-// call setBreeds
+import ThemeContext from "./ThemeContext";
 
 const SearchParams = () => {
   const [location, setLocation] = useState("Seattle, WA");
@@ -27,6 +14,7 @@ const SearchParams = () => {
   const [animal, AnimalDropdown] = useDropdown("Animal", "dog", ANIMALS);
   const [breed, BreedDropdown, setBreed] = useDropdown("Breed", "", breeds);
   const [pets, setPets] = useState([]);
+  const [theme, setTheme] = useContext(ThemeContext);
 
   // an async function is a function that is guranteed to return a promise
   // await key word forces the function to wait until the pet.animals is complete
@@ -85,7 +73,18 @@ const SearchParams = () => {
         </label>
         <AnimalDropdown />
         <BreedDropdown />
-        <button>Submit</button>
+        <label htmlFor="theme">
+          Theme
+          <select
+            value={theme}
+            onChange={e => setTheme(e.target.value)}
+            onBlur={e => setTheme(e.target.value)}
+          >
+            <option value="peru">Peru</option>
+            <option value="orangered">Orange Red</option>
+          </select>
+        </label>
+        <button style={{ backgroundColor: theme }}>Submit</button>
       </form>
       <Results pets={pets} />
     </div>
