@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import { createPortal } from "react-dom";
 
+// this will mount a div inside of the modal whenever it is rendered and remove it whenever it is unrendered
 const Modal = ({ children }) => {
   // we are going to have an element that we are going to create and we always want to refer to the same element
   const elRef = useRef(null);
@@ -12,7 +13,7 @@ const Modal = ({ children }) => {
   }
 
   useEffect(() => {
-    const modalRoot = document.getEelementById("modal");
+    const modalRoot = document.getElementById("modal");
     modalRoot.appendChild(elRef.current);
     // if you return a function within useEffect it will be the cleanup function
     return () => modalRoot.removeChild(elRef.current);
